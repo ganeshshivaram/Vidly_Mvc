@@ -191,16 +191,36 @@
     <Compile Include="Migrations\201711080705113_AddNameToMembershipTypes.Designer.cs">
       <DependentUpon>201711080705113_AddNameToMembershipTypes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201711080727331_AddBirthdateToCustomerTable.cs" />
+    <Compile Include="Migrations\201711080727331_AddBirthdateToCustomerTable.Designer.cs">
+      <DependentUpon>201711080727331_AddBirthdateToCustomerTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711080752268_AddGenreAndMovies.cs" />
+    <Compile Include="Migrations\201711080752268_AddGenreAndMovies.Designer.cs">
+      <DependentUpon>201711080752268_AddGenreAndMovies.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711080753350_AddGenreTypes.cs" />
+    <Compile Include="Migrations\201711080753350_AddGenreTypes.Designer.cs">
+      <DependentUpon>201711080753350_AddGenreTypes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711080757561_AddMoviesData.cs" />
+    <Compile Include="Migrations\201711080757561_AddMoviesData.Designer.cs">
+      <DependentUpon>201711080757561_AddMoviesData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711080819374_AddMaxCharacterValidationForGenre.cs" />
+    <Compile Include="Migrations\201711080819374_AddMaxCharacterValidationForGenre.Designer.cs">
+      <DependentUpon>201711080819374_AddMaxCharacterValidationForGenre.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
+    <Compile Include="Models\Genre.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\MembershipType.cs" />
     <Compile Include="Models\Movie.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
-    <Compile Include="ViewModels\RandomMovieViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-lumen.css" />
@@ -259,14 +279,15 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Movies\Random.cshtml" />
     <Content Include="Views\Shared\_NavBar.cshtml" />
     <None Include="Views\Customers\Details.cshtml" />
     <None Include="Views\Customers\Index.cshtml" />
+    <Content Include="Views\Movies\Details.cshtml" />
     <None Include="Views\Movies\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="ViewModels\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -293,6 +314,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201711080705113_AddNameToMembershipTypes.resx">
       <DependentUpon>201711080705113_AddNameToMembershipTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711080727331_AddBirthdateToCustomerTable.resx">
+      <DependentUpon>201711080727331_AddBirthdateToCustomerTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711080752268_AddGenreAndMovies.resx">
+      <DependentUpon>201711080752268_AddGenreAndMovies.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711080753350_AddGenreTypes.resx">
+      <DependentUpon>201711080753350_AddGenreTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711080757561_AddMoviesData.resx">
+      <DependentUpon>201711080757561_AddMoviesData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711080819374_AddMaxCharacterValidationForGenre.resx">
+      <DependentUpon>201711080819374_AddMaxCharacterValidationForGenre.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

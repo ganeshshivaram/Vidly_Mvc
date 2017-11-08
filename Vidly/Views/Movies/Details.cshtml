@@ -1,0 +1,22 @@
+﻿@model Vidly.Models.Movie
+           
+<h1> @Model.Name </h1>
+
+<ul>
+    <li> <h4> Genre: @Model.Genre.Name </h4></li>
+
+    @if (@Model.ReleaseDate.HasValue)
+    {
+        <li> <h4> Release Date: @Model.ReleaseDate.Value.ToLongDateString() </h4> </li>
+    }
+    
+    @if (@Model.DateAdded.HasValue)
+    {
+        <li> <h4> Date Added: @Model.DateAdded.Value.ToLongDateString() </h4> </li>
+    }
+    @if (@Model.NumberInStock.HasValue)
+    {
+        <li> <h4> Number In Stock: @Model.NumberInStock </h4></li>
+    }
+
+</ul>
