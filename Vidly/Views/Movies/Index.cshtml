@@ -6,6 +6,11 @@
 }
 
 <h2>Movies</h2>
+
+<button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("add", "movies")'"> Add Movie</button>
+
+<hr/>
+
 <table class="table table-bordered table-hover">
     <thead>
         <tr>
@@ -17,7 +22,7 @@
         @foreach (var movie in Model)
         {
             <tr>
-                <td> @Html.ActionLink(@movie.Name, "details", "movies", new {id = @movie.Id}, null)</td>
+                <td> @Html.ActionLink(@movie.Name, "modify", "movies", new {id = @movie.Id}, null)</td>
                 <td> @movie.Genre.Name </td>
             </tr>
         }

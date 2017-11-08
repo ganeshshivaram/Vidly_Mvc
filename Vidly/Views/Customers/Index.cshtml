@@ -16,6 +16,11 @@
 }
 
 <h2>Customers</h2>
+
+<button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("add", "customers")'"> Add Customer</button>
+
+<hr/>
+
 @if (!Model.Any())
 {
     <p>We don't have any customers yet.</p>
