@@ -215,6 +215,14 @@
     <Compile Include="Migrations\201711090748584_AddMandatoryValueToCustomerFields.Designer.cs">
       <DependentUpon>201711090748584_AddMandatoryValueToCustomerFields.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201711091336452_ModifyMoviesToAddValidation.cs" />
+    <Compile Include="Migrations\201711091336452_ModifyMoviesToAddValidation.Designer.cs">
+      <DependentUpon>201711091336452_ModifyMoviesToAddValidation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711091341091_ModifyMoviesToAddValidation_1.cs" />
+    <Compile Include="Migrations\201711091341091_ModifyMoviesToAddValidation_1.Designer.cs">
+      <DependentUpon>201711091341091_ModifyMoviesToAddValidation_1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -340,6 +348,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201711090748584_AddMandatoryValueToCustomerFields.resx">
       <DependentUpon>201711090748584_AddMandatoryValueToCustomerFields.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711091336452_ModifyMoviesToAddValidation.resx">
+      <DependentUpon>201711091336452_ModifyMoviesToAddValidation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711091341091_ModifyMoviesToAddValidation_1.resx">
+      <DependentUpon>201711091341091_ModifyMoviesToAddValidation_1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
