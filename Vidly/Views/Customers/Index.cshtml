@@ -9,29 +9,25 @@
     different data structure, as long as it is enumerable, our view code
     will remain unchanged.
 *@
-
 @{
     ViewBag.Title = "Customers";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
 <h2>Customers</h2>
-
 <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("add", "customers")'"> Add Customer</button>
-
-<hr/>
-
+<hr />
 @if (!Model.Any())
 {
     <p>We don't have any customers yet.</p>
 }
 else
 {
-    <table class="table table-bordered table-hover">
+    <table id="customers" class="table table-bordered table-hover">
         <thead>
             <tr>
-                <th>Customer</th>
-                <th>MembershipType</th>
+                <th width="60%">Customer</th>
+                <th width="20%">MembershipType</th>
+                <th width="20%">Delete Customer</th>
             </tr>
         </thead>
         <tbody>
@@ -40,8 +36,36 @@ else
                 <tr>
                     <td>@Html.ActionLink(customer.Name, "modify", "Customers", new { id = customer.Id }, null)</td>
                     <td>@customer.MembershipType.Name</td>
+                    <td style="cursor: pointer" data-customer-id="@customer.Id" class="no-css-cust-delete">
+                        <a>Delete <span class="glyphicon glyphicon glyphicon-remove remove-icon"></span> </a>
+
+                    </td>
                 </tr>
             }
         </tbody>
     </table>
+}
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            $("#customers").on("click", ".no-css-cust-delete", function () {
+
+                var button = $(this);
+
+                bootbox.confirm("Are you sure you want to delete ?", function(result) {
+                    if (result) {
+                        $.ajax({
+                            url: "/api/customer/delete/" + button.attr("data-customer-id"),
+                            method: "DELETE",
+                            success: function () {
+                                button.parents("tr").remove();
+                            }
+                        });
+                    }
+                });
+
+            });
+        });
+    </script>
 }

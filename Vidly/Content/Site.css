@@ -31,3 +31,7 @@ textarea {
 .input-validation-error {
     border: solid 1px #990000;
 }
+
+.remove-icon {
+    top: 3px !important;
+}
