@@ -1,5 +1,4 @@
-﻿using System.Data.Entity;
-using System.Linq;
+﻿using System.Linq;
 using System.Web.Mvc;
 using Vidly.Models;
 using Vidly.ViewModels;
@@ -22,9 +21,8 @@ namespace Vidly.Controllers
 
         public ViewResult Index()
         {
-            var customers = _context.Customers.Include(c => c.MembershipType).ToList();
 
-            return View(customers);
+            return View();
         }
 
         public ActionResult Details(int id)
@@ -53,7 +51,7 @@ namespace Vidly.Controllers
             return View("CustomerForm", customer);
         }
 
-        [Route("customers/modify")]
+        [Route("customers/modify/{id}")]
         public ActionResult Modify(int id)
         {
             var customer = _context.Customers.FirstOrDefault(m => m.Id == id);
