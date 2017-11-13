@@ -22,9 +22,7 @@ namespace Vidly.Controllers
 
         public ViewResult Index()
         {
-            var movies = _context.Movies.Include(m => m.Genre).ToList();
-
-            return View(movies);
+            return View();
         }
 
         [Route("movies/details/{id}")]
@@ -49,7 +47,7 @@ namespace Vidly.Controllers
             return View("MovieForm", movieFormViewModel);
         }
 
-        [Route("movies/modify")]
+        [Route("movies/modify/{id}")]
         public ActionResult Modify(int? id)
         {
             ViewBag.PageMode = "Edit";

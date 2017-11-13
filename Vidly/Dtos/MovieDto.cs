@@ -5,6 +5,8 @@ namespace Vidly.Dtos
 {
     public class MovieDto
     {
+        public int Id { get; set; }
+
         [Required]
         public string Name { get; set; }
 
@@ -13,6 +15,8 @@ namespace Vidly.Dtos
 
         [Required]
         public DateTime? DateAdded { get; set; }
+
+        public GenreDto Genre { get; set; }
 
         [Required]
         [Range(1, 20)]
