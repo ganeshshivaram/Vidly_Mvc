@@ -247,6 +247,10 @@
     <Compile Include="Migrations\201711091341091_ModifyMoviesToAddValidation_1.Designer.cs">
       <DependentUpon>201711091341091_ModifyMoviesToAddValidation_1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201711151554445_UserSeed.cs" />
+    <Compile Include="Migrations\201711151554445_UserSeed.Designer.cs">
+      <DependentUpon>201711151554445_UserSeed.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -553,6 +557,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201711091341091_ModifyMoviesToAddValidation_1.resx">
       <DependentUpon>201711091341091_ModifyMoviesToAddValidation_1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711151554445_UserSeed.resx">
+      <DependentUpon>201711151554445_UserSeed.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
