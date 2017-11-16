@@ -24,12 +24,16 @@ namespace Vidly.Controllers.Api
 
         [System.Web.Http.Route("api/customers")]
         [HttpGet]
-        public IHttpActionResult GetCustomer()
+        public IHttpActionResult GetCustomer(string query = null)
         {
-            var customers = _context.
-                            Customers.
-                            Include(m => m.MembershipType).
-                            ToList();
+            var customersQuery = _context.
+                                 Customers.
+                                 Include(m => m.MembershipType);
+
+            if (!string.IsNullOrWhiteSpace(query))
+                customersQuery = customersQuery.Where(c => c.Name.Contains(query));
+
+            var customers = customersQuery.ToList();
 
             return Ok(Mapper.Map<IEnumerable<Customer>, IEnumerable<CustomerDto>>(customers));
         }
