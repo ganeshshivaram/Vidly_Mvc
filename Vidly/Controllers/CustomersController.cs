@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using System.Web.Mvc;
+using Vidly.Helpers;
 using Vidly.Models;
 using Vidly.ViewModels;
 
@@ -19,13 +20,16 @@ namespace Vidly.Controllers
             _context.Dispose();
         }
 
-        
+
         public ViewResult Index()
         {
+            if (User.IsInRole(RoleHelper.CanManageCustomers))
+                return View("CustomerList");
 
-            return View();
+            return View("ReadOnlyCustomerList");
         }
 
+        [Route("customers/details/{id}")]
         public ActionResult Details(int id)
         {
             var customer = _context.Customers.SingleOrDefault(c => c.Id == id);
@@ -37,6 +41,7 @@ namespace Vidly.Controllers
         }
 
         [Route("customers/add")]
+        [Authorize(Roles = RoleHelper.CanManageCustomers)]
         public ActionResult Add()
         {
             var membershipTypes = _context.MembershipTypes;
@@ -53,6 +58,7 @@ namespace Vidly.Controllers
         }
 
         [Route("customers/modify/{id}")]
+        [Authorize(Roles = RoleHelper.CanManageCustomers)]
         public ActionResult Modify(int id)
         {
             var customer = _context.Customers.FirstOrDefault(m => m.Id == id);
@@ -75,6 +81,7 @@ namespace Vidly.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = RoleHelper.CanManageCustomers)]
         public ActionResult Save(Customer customer)
         {
             if (!ModelState.IsValid)

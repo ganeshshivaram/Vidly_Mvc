@@ -2,12 +2,13 @@ namespace Vidly.Migrations
 {
     using System.Data.Entity.Migrations;
 
-    public partial class UserSeed : DbMigration
+    public partial class UserSeedData : DbMigration
     {
         public override void Up()
         {
-
             Sql(@"INSERT INTO [dbo].[AspNetRoles] ([Id], [Name]) VALUES (N'56b5fe95-1c8d-4772-94dc-0c3ba69595ca', N'CanManageMovies')");
+
+            Sql(@"INSERT INTO [dbo].[AspNetRoles] ([Id], [Name]) VALUES (N'66b5fe95-1c8d-4772-94dc-0c3ba69595cb', N'CanManageCustomers')");
 
             Sql(@"
                 INSERT INTO 
@@ -32,6 +33,12 @@ namespace Vidly.Migrations
                 [dbo].[AspNetUserRoles] ([UserId], [RoleId]) 
                 VALUES 
                 (N'535cee78-a7fb-49f7-883b-272f3b244924', N'56b5fe95-1c8d-4772-94dc-0c3ba69595ca')
+                ");
+
+            Sql(@"INSERT INTO 
+                [dbo].[AspNetUserRoles] ([UserId], [RoleId]) 
+                VALUES 
+                (N'535cee78-a7fb-49f7-883b-272f3b244924', N'66b5fe95-1c8d-4772-94dc-0c3ba69595cb')
                 ");
         }
 

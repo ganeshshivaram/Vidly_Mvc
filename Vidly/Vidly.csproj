@@ -191,6 +191,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\RoleHelper.cs" />
     <Compile Include="Migrations\201604040445246_InitialModel.cs" />
     <Compile Include="Migrations\201604040445246_InitialModel.Designer.cs">
       <DependentUpon>201604040445246_InitialModel.cs</DependentUpon>
@@ -247,9 +248,9 @@
     <Compile Include="Migrations\201711091341091_ModifyMoviesToAddValidation_1.Designer.cs">
       <DependentUpon>201711091341091_ModifyMoviesToAddValidation_1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201711151554445_UserSeed.cs" />
-    <Compile Include="Migrations\201711151554445_UserSeed.Designer.cs">
-      <DependentUpon>201711151554445_UserSeed.cs</DependentUpon>
+    <Compile Include="Migrations\201711160715211_UserSeedData.cs" />
+    <Compile Include="Migrations\201711160715211_UserSeedData.Designer.cs">
+      <DependentUpon>201711160715211_UserSeedData.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -500,9 +501,11 @@
     <Content Include="Views\Shared\_NavBar.cshtml" />
     <Content Include="Views\Customers\CustomerForm.cshtml" />
     <None Include="Views\Customers\Details.cshtml" />
-    <None Include="Views\Customers\Index.cshtml" />
+    <Content Include="Views\Customers\ReadOnlyCustomerList.cshtml" />
+    <None Include="Views\Customers\CustomerList.cshtml" />
     <Content Include="Views\Movies\Details.cshtml" />
-    <None Include="Views\Movies\Index.cshtml" />
+    <Content Include="Views\Movies\ReadOnlyMovieList.cshtml" />
+    <None Include="Views\Movies\MovieList.cshtml" />
     <Content Include="Views\Movies\MovieForm.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -558,8 +561,8 @@
     <EmbeddedResource Include="Migrations\201711091341091_ModifyMoviesToAddValidation_1.resx">
       <DependentUpon>201711091341091_ModifyMoviesToAddValidation_1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201711151554445_UserSeed.resx">
-      <DependentUpon>201711151554445_UserSeed.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201711160715211_UserSeedData.resx">
+      <DependentUpon>201711160715211_UserSeedData.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

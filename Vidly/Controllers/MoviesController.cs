@@ -1,6 +1,7 @@
 ﻿using System.Data.Entity;
 using System.Linq;
 using System.Web.Mvc;
+using Vidly.Helpers;
 using Vidly.Models;
 using Vidly.ViewModels;
 
@@ -8,7 +9,7 @@ namespace Vidly.Controllers
 {
     public class MoviesController : Controller
     {
-        private ApplicationDbContext _context;
+        private readonly ApplicationDbContext _context;
 
         public MoviesController()
         {
@@ -22,7 +23,10 @@ namespace Vidly.Controllers
 
         public ViewResult Index()
         {
-            return View();
+            if (User.IsInRole(RoleHelper.CanManageMovies))
+                return View("MovieList");
+
+            return View("ReadOnlyMovieList");
         }
 
         [Route("movies/details/{id}")]
@@ -32,7 +36,9 @@ namespace Vidly.Controllers
             return View("Details", movie);
         }
 
+        
         [Route("movies/add")]
+        [Authorize(Roles = RoleHelper.CanManageMovies)]
         public ActionResult Add()
         {
             ViewBag.PageMode = "Add";
@@ -47,7 +53,9 @@ namespace Vidly.Controllers
             return View("MovieForm", movieFormViewModel);
         }
 
+        
         [Route("movies/modify/{id}")]
+        [Authorize(Roles = RoleHelper.CanManageMovies)]
         public ActionResult Modify(int? id)
         {
             ViewBag.PageMode = "Edit";
@@ -71,6 +79,7 @@ namespace Vidly.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = RoleHelper.CanManageMovies)]
         public ActionResult Save(Movie movie)
         {
             if (!ModelState.IsValid)
