@@ -1,4 +1,5 @@
-﻿
+﻿@model dynamic
+
 @{
     ViewBag.Title = "NewRentals";
 }
@@ -7,19 +8,19 @@
 
 <hr/>
 
-<form>
+<form id="newRental">
 
     <div class="form-group">
         <label>Customer</label>
         <div class="tt-container">
-            <input id="customers" type="text" value="" class="form-control" />
+            <input id="customers" name="customer" data-rule-validCustomer="true" type="text" class="form-control" />
         </div>
     </div>
-    
+
     <div class="form-group">
         <label>Movie</label>
         <div class="tt-container">
-            <input id="movies" type="text" value="" class="form-control" />
+            <input id="movies" name="movie" data-rule-atleastOneMovie="true" type="text" class="form-control" />
         </div>
     </div>
     <div class="row">
@@ -27,8 +28,8 @@
             <ul id="selected-movie-list" class="list-group"></ul>
         </div>
     </div>
- 
-    
+
+
     <button class="btn btn-primary">Submit</button>
 
 </form>
@@ -36,12 +37,13 @@
 
 @section scripts
 {
+  @Scripts.Render("~/bundles/jqueryval");
     <script>
         $(document).ready(function() {
 
             var vm = {
-                customerId: null,
-                movieIds: []
+                "customerId": "",
+                "movieIds": []
             };
 
             var customers = new Bloodhound({
@@ -81,11 +83,45 @@
                 name: 'movies',
                 display: 'name',
                 source: movies
-            }).on("typeahead:select", function (e, movie) {
+            }).on("typeahead:select", function(e, movie) {
                 $("#selected-movie-list").append("<li class='list-group-item disabled'>" + movie.name + "</li>");
                 $("#movies").typeahead("val", "");
 
                 vm.movieIds.push(movie.id);
+            });
+
+            $.validator.addMethod("ValidCustomer", function() {
+                return vm.customerId && vm.customerId !== 0;
+            }, "Please select a valid customer");
+
+            $.validator.addMethod("AtleastOneMovie", function() {
+                return vm.movieIds && vm.movieIds.length > 0;
+            }, "Please select at least one movie");
+
+            var validator = $("#newRental").validate({
+                submitHandler: function() {
+                    $.ajax({
+                            url: "/api/rentals/add",
+                            method: "post",
+                            data: vm
+                        })
+                        .done(function() {
+                            toastr.success("SUCCESS: New rental is added successfully");
+
+                            $("#customers").typeahead("val", "");
+                            $("#movies").typeahead("val", "");
+                            $("#selected-movie-list").empty();
+
+                            vm = { "movieIds": [] };
+
+                            validator.resetForm();
+                        })
+                        .fail(function(response) {
+                            toastr.error("ERROR: " + response.responseJSON.message);
+                        });
+
+                    return false;
+                }
             });
 
         });

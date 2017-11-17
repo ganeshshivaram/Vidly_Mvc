@@ -24,12 +24,12 @@ textarea {
 }
 
 
-.validation-error-message {
+.validation-error-message, label.error {
     color: #ff0000;
 }
 
-.input-validation-error {
-    border: solid 1px #990000;
+.input-validation-error, input.error {
+    border: solid 2px #ff0000;
 }
 
 .remove-icon {
